@@ -2,31 +2,38 @@
 
 ## Project Structure & Module Organization
 
-This repository is currently a minimal scaffold with only `LICENSE` at the root. Keep contributor-facing documentation, including this file, in the repository root. When source code is added, prefer a conventional layout such as `src/` for application code, `tests/` for automated tests, and `assets/` or `public/` for static files. Keep test fixtures near the tests that use them unless they are shared broadly.
+This repository contains a dependency-free static Four in a Row game.
+
+- `index.html`: semantic page structure, game container, status area, controls, and script/style references.
+- `styles.css`: responsive layout, board styling, player colors, focus states, and mobile adjustments.
+- `script.js`: game state, rendering, move validation, turn switching, win detection, draw detection, and reset behavior.
+- `REQUIREMENTS.md`: product and technical requirements for the game.
+- `README.md`: project overview and local usage instructions.
+
+Keep new static assets in an `assets/` directory if they are added later. Avoid introducing build tooling unless the app requirements justify it.
 
 ## Build, Test, and Development Commands
 
-No build system or package manager configuration is present yet. Add commands here when tooling is introduced, and keep them runnable from the repository root. Recommended examples:
+No install or build step is required.
 
-- `npm install`: install JavaScript dependencies when a `package.json` exists.
-- `npm run dev`: start a local development server.
-- `npm test`: run the full automated test suite.
-- `npm run lint`: check formatting and code quality.
+- Open `index.html`: run the app directly in a browser.
+- `python3 -m http.server 8000`: serve the folder locally at `http://localhost:8000`.
+- `node --check script.js`: validate JavaScript syntax.
 
-If another stack is chosen, use equivalent commands such as `make test`, `pytest`, `cargo test`, or `go test ./...`.
+There is currently no automated test suite. If tests are added, document the command here and keep it runnable from the repository root.
 
 ## Coding Style & Naming Conventions
 
-Match the conventions of the language and framework introduced into the repository. Use consistent indentation across each file type, descriptive names, and small modules with clear responsibilities. Prefer lower-case, hyphenated names for documentation files when adding new guides, for example `deployment-notes.md`. For code, follow the ecosystem norm, such as `camelCase` for JavaScript variables, `PascalCase` for React components, or `snake_case` for Python functions.
+Use plain HTML, CSS, and JavaScript. Keep indentation at two spaces for HTML/CSS and JavaScript blocks. Use `camelCase` for JavaScript variables and functions, `UPPER_CASE` for constants, and hyphenated CSS class names such as `game-shell` and `column-button`. Prefer descriptive names over abbreviations. Keep DOM updates centralized in rendering helpers where practical.
 
 ## Testing Guidelines
 
-Add tests alongside new functionality. Use a dedicated `tests/` directory for integration or end-to-end coverage, and colocate small unit tests when that is idiomatic for the chosen framework. Name test files predictably, such as `*.test.js`, `*_test.py`, or `*_test.go`. Every behavioral change should include either a test or a clear explanation in the pull request for why manual validation is sufficient.
+Before committing gameplay changes, manually verify horizontal, vertical, and both diagonal wins; draw state; full-column rejection; reset behavior; and mobile layout. Run `node --check script.js` after JavaScript edits. If automated tests are introduced, prioritize pure tests for `findWin`, `lowestOpenRow`, and move validation.
 
 ## Commit & Pull Request Guidelines
 
-The current history uses a short imperative commit message: `Add MIT License to the project`. Continue using concise, imperative subjects, for example `Add user settings model` or `Fix login validation`. Pull requests should include a short summary, testing performed, linked issues when applicable, and screenshots or recordings for user-facing UI changes.
+Project history uses concise imperative commit messages, for example `Add contributor and game requirements docs` and `Initial implementation of the Four in a Row game with HTML, CSS, and JavaScript`. Continue that style. Pull requests should include a short summary, testing performed, linked issues when relevant, and screenshots or recordings for visible UI changes.
 
 ## Security & Configuration Tips
 
-Do not commit secrets, API keys, local credentials, generated dependency caches, or machine-specific configuration. If environment variables become necessary, document required keys in a checked-in example file such as `.env.example` and keep real values local.
+Do not commit secrets, generated caches, editor-specific settings, or machine-specific configuration. This app has no backend and should remain safe to host from static file hosting such as GitHub Pages.

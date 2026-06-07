@@ -2,70 +2,71 @@
 
 ## Overview
 
-Build a static browser-based Four in a Row game. The app should run locally by opening `index.html` or by serving the folder with any static file server. It should not require a backend, database, account system, or build pipeline for the first version.
+This project is a static browser-based Four in a Row game. It runs with plain HTML, CSS, and JavaScript, either by opening `index.html` directly or by serving the repository with a static file server. It has no backend, database, account system, dependency install, or build pipeline.
 
-## Goals
+## Implemented Version 1 Scope
 
-- Provide a complete two-player local game of Four in a Row.
-- Use a simple, responsive interface that works on desktop and mobile browsers.
-- Keep implementation lightweight and understandable with plain HTML, CSS, and JavaScript unless a future decision introduces a framework.
-- Make the game state clear at all times: current player, valid moves, win/draw result, and reset control.
-
-## Core Gameplay
-
-- Render a standard 7-column by 6-row board.
-- Allow two local players to alternate turns.
-- Let players choose a column; the piece must fall to the lowest available row in that column.
-- Reject moves in full columns.
-- Detect wins with four matching pieces horizontally, vertically, and diagonally.
-- Detect a draw when the board is full and no player has won.
-- Stop accepting moves after a win or draw until the game is reset.
-- Provide a reset/new game action.
+- Local two-player gameplay on one device.
+- Standard 7-column by 6-row board.
+- Red and yellow player pieces.
+- Column controls for dropping pieces.
+- Turn status and result messaging.
+- Win detection for horizontal, vertical, and diagonal lines.
+- Draw detection when the board is full.
+- Full-column rejection by disabling unavailable column controls.
+- New game reset without refreshing the page.
+- Responsive layout for desktop and mobile browsers.
 
 ## User Interface Requirements
 
-- Display the board as a clear grid with circular slots.
-- Use distinct player colors, for example red and yellow.
-- Show the active player before each move.
-- Show a visible result message after a win or draw.
-- Provide hover, focus, or tap feedback for playable columns.
-- Use accessible labels for controls and status messages.
-- Ensure text and controls remain readable on small screens.
+- Display the game as the first screen with no landing page.
+- Show the current player before each move.
+- Use clear, distinct piece colors.
+- Show a result message after a win or draw.
+- Highlight winning cells after a win.
+- Provide visible hover and keyboard focus states on controls.
+- Keep board, text, and buttons readable on small screens.
+- Use accessible labels for the board, cells, column controls, and live status.
 
 ## Technical Requirements
 
-- Initial file structure:
-  - `index.html`: page markup and app entry point.
-  - `styles.css`: layout, board, and responsive styling.
-  - `script.js`: game state, move handling, and win detection.
-- Avoid external runtime dependencies for version 1.
-- Keep all logic client-side.
-- Use semantic HTML where practical.
-- Store game state in JavaScript memory; persistence is not required.
+- `index.html` contains the document structure and app entry point.
+- `styles.css` contains all layout, board, responsive, and visual styling.
+- `script.js` contains all client-side game logic.
+- Game state is stored in JavaScript memory only.
+- Runtime dependencies are not allowed for version 1.
+- The app must remain usable from static hosting.
 
 ## Testing Requirements
 
-- Manually verify:
-  - Horizontal, vertical, and both diagonal wins.
-  - Draw state.
-  - Full-column rejection.
-  - Reset behavior.
-  - Mobile and desktop layout.
-- If automated tests are added, cover win detection and move validation first.
+Manual validation is required before release:
 
-## Out of Scope for Version 1
+- Horizontal win.
+- Vertical win.
+- Diagonal down-right win.
+- Diagonal up-right win.
+- Draw state.
+- Full-column disabled state.
+- Reset after active game, win, and draw.
+- Desktop and mobile viewport checks.
+
+Run `node --check script.js` after JavaScript edits.
+
+## Out of Scope
 
 - Online multiplayer.
-- User accounts.
 - AI opponent.
-- Score history across browser sessions.
-- Animations beyond simple visual feedback.
+- User accounts.
+- Persistent score history.
 - Audio effects.
+- Backend services.
+- Build tooling.
 
 ## Acceptance Criteria
 
-- A user can start a game immediately in the browser.
-- Two players can complete a legal Four in a Row match.
+- A user can start playing immediately in the browser.
+- Two local players can complete a legal match.
 - The app correctly announces wins and draws.
-- The board can be reset without refreshing the page.
-- The app remains usable at common mobile and desktop viewport sizes.
+- The winning line is visually marked.
+- The board can be reset from the New game button.
+- The app works at common mobile and desktop viewport sizes.
