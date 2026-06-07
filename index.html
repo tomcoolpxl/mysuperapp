@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Four in a Row</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app" aria-labelledby="game-title">
+      <section class="game-shell">
+        <header class="game-header">
+          <div>
+            <p class="eyebrow">Local two player</p>
+            <h1 id="game-title">Four in a Row</h1>
+          </div>
+          <button class="reset-button" id="resetButton" type="button">New game</button>
+        </header>
+
+        <section class="status-panel" aria-live="polite">
+          <div class="player-chip" id="turnChip" aria-hidden="true"></div>
+          <p id="statusText">Red starts. Choose a column.</p>
+        </section>
+
+        <div class="board-wrap">
+          <div class="column-controls" id="columnControls" aria-label="Choose a column"></div>
+          <div class="board" id="board" role="grid" aria-label="Four in a Row board"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
